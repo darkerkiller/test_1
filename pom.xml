@@ -100,11 +100,12 @@
                 <version>3.20.0</version>
                 <configuration>
                     <rulesets>
-                        <ruleset>rulesets/java/basic.xml</ruleset>
-                        <ruleset>rulesets/java/naming.xml</ruleset>
+                        <ruleset>pmd-ruleset.xml</ruleset>
                     </rulesets>
                     <printFailingErrors>true</printFailingErrors>
                     <targetDirectory>${project.build.directory}/reports/pmd</targetDirectory>
+                    <failurePriority>5</failurePriority>
+                    <minimumPriority>5</minimumPriority>
                 </configuration>
                 <executions>
                     <execution>
@@ -112,6 +113,7 @@
                         <phase>verify</phase>
                         <goals>
                             <goal>pmd</goal>
+                            <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -174,8 +176,7 @@
                 <version>3.20.0</version>
                 <configuration>
                     <rulesets>
-                        <rulesets>java/basic.xml</rulesets>
-                        <rulesets>java/naming.xml</rulesets>
+                        <ruleset>pmd-ruleset.xml</ruleset>
                     </rulesets>
                 </configuration>
             </plugin>
