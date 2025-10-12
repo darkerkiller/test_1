@@ -1,0 +1,60 @@
+# Text Editor Configuration File
+editor:
+  # Default font settings
+  font:
+    name: "Consolas"
+    size: 12
+    style: "PLAIN"  # PLAIN, BOLD, ITALIC
+  
+  # Default colors
+  colors:
+    background: "#FFFFFF"
+    foreground: "#000000"
+    selection: "#3399FF"
+    caret: "#000000"
+  
+  # Window settings
+  window:
+    title: "Advanced Text Editor"
+    width: 800
+    height: 600
+    location: "CENTER"  # CENTER, UPPER_LEFT, etc.
+  
+  # File settings
+  file:
+    default_extension: ".txt"
+    encoding: "UTF-8"
+    auto_save: false
+    auto_save_interval: 300  # seconds
+  
+  # Syntax highlighting colors
+  syntax_highlighting:
+    enabled: true
+    java:
+      keywords: "#0000FF"
+      strings: "#008000"
+      comments: "#808080"
+      numbers: "#FF0000"
+    python:
+      keywords: "#0000FF"
+      strings: "#008000"
+      comments: "#808080"
+      numbers: "#FF0000"
+    javascript:
+      keywords: "#0000FF"
+      strings: "#008000"
+      comments: "#808080"
+      numbers: "#FF0000"
+  
+  # Recent files
+  recent_files:
+    max_count: 10
+    files: []
+  
+  # Print settings
+  print:
+    font_size: 10
+    margin_top: 20
+    margin_bottom: 20
+    margin_left: 25
+    margin_right: 25

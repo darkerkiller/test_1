@@ -1,0 +1,37 @@
+Advanced Text Editor - Demo File
+=====================================
+
+This is a demonstration of the Advanced Text Editor functionality.
+
+Features Implemented:
+✓ File Operations (New, Open, Save, Save As)
+✓ Text Editing (Cut, Copy, Paste, Select All)
+✓ Search Functionality
+✓ Time/Date Insertion
+✓ Print Support
+✓ Configuration Management
+✓ Status Bar with Real-time Clock
+
+Menu Structure:
+- File: New, Open, Save, Save As, Print, Exit
+- Edit: Cut, Copy, Paste, Select All
+- Search: Find, Time/Date
+- Advanced: Open RTF, Open ODT, Convert to PDF
+- Help: About
+
+Keyboard Shortcuts:
+- Ctrl+N: New Document
+- Ctrl+O: Open File
+- Ctrl+S: Save File
+- Ctrl+F: Find Text
+- Ctrl+X: Cut
+- Ctrl+C: Copy
+- Ctrl+V: Paste
+- Ctrl+A: Select All
+- Alt+F4: Exit
+- F5: Insert Time/Date
+
+This text editor supports multiple file formats and provides a professional
+editing experience with syntax highlighting capabilities (coming soon).
+
+Try the search functionality by pressing Ctrl+F and searching for "text"!
