@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  text-editor:
+    build: .
+    container_name: advanced-text-editor
+    environment:
+      - DISPLAY=${DISPLAY:-:0}
+      - JAVA_OPTS=-Djava.awt.headless=false
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./documents:/app/documents
+      - ./config:/app/config
+    networks:
+      - text-editor-network
+    restart: unless-stopped
+    # For headless mode, uncomment the following line
+    # command: ["java", "-Djava.awt.headless=true", "-jar", "app.jar"]
+
+  # Optional: Add a file server for document sharing
+  file-server:
+    image: nginx:alpine
+    container_name: text-editor-files
+    ports:
+      - "8080:80"
+    volumes:
+      - ./documents:/usr/share/nginx/html/documents:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - text-editor-network
+    restart: unless-stopped
+    profiles:
+      - with-files
+
+networks:
+  text-editor-network:
+    driver: bridge
+
+volumes:
+  documents:
+    driver: local
+  config:
+    driver: local
