@@ -742,11 +742,15 @@ public class TextEditor extends JFrame {
                 StringBuilder currentLine = new StringBuilder();
                 
                 for (String word : words) {
-                    String testLine = currentLine.length() == 0 ? word : currentLine + " " + word;
+                    String testLine = currentLine.length() == 0 ? word : currentLine.toString() + " " + word;
                     float textWidth = font.getStringWidth(testLine) / 1000 * fontSize;
                     
                     if (textWidth < width) {
-                        currentLine.append(currentLine.length() == 0 ? word : " " + word);
+                        if (currentLine.length() == 0) {
+                            currentLine.append(word);
+                        } else {
+                            currentLine.append(" ").append(word);
+                        }
                     } else {
                         // Draw the current line and start a new one
                         if (currentLine.length() > 0) {
