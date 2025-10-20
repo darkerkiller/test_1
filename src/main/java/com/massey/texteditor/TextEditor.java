@@ -45,6 +45,7 @@ public class TextEditor extends JFrame {
     private Set<String> javaKeywords;
     private Set<String> pythonKeywords;
     private Set<String> jsKeywords;
+    private Set<String> cppKeywords;
     
     // Configuration
     private Properties config;
@@ -199,6 +200,22 @@ public class TextEditor extends JFrame {
             "transient", "true", "try", "typeof", "var", "void", "volatile", "while", "with", "yield"
         };
         jsKeywords.addAll(Arrays.asList(jsKeywordArray));
+        
+        // Initialize C++ keywords
+        cppKeywords = new HashSet<>();
+        String[] cppKeywordArray = {
+            "alignas", "alignof", "and", "and_eq", "asm", "auto", "bitand", "bitor", "bool", "break",
+            "case", "catch", "char", "char16_t", "char32_t", "class", "compl", "const", "constexpr",
+            "const_cast", "continue", "decltype", "default", "delete", "do", "double", "dynamic_cast",
+            "else", "enum", "explicit", "export", "extern", "false", "float", "for", "friend", "goto",
+            "if", "inline", "int", "long", "mutable", "namespace", "new", "noexcept", "not", "not_eq",
+            "nullptr", "operator", "or", "or_eq", "private", "protected", "public", "register",
+            "reinterpret_cast", "return", "short", "signed", "sizeof", "static", "static_assert",
+            "static_cast", "struct", "switch", "template", "this", "thread_local", "throw", "true",
+            "try", "typedef", "typeid", "typename", "union", "unsigned", "using", "virtual", "void",
+            "volatile", "wchar_t", "while", "xor", "xor_eq"
+        };
+        cppKeywords.addAll(Arrays.asList(cppKeywordArray));
     }
     
     private void setupMenuBar() {
@@ -816,6 +833,8 @@ public class TextEditor extends JFrame {
                 highlightPython(text);
             } else if (fileName.endsWith(".js")) {
                 highlightJavaScript(text);
+            } else if (fileName.endsWith(".cpp") || fileName.endsWith(".cc") || fileName.endsWith(".cxx") || fileName.endsWith(".c")) {
+                highlightCpp(text);
             }
             
         } catch (Exception e) {
@@ -839,6 +858,13 @@ public class TextEditor extends JFrame {
     
     private void highlightJavaScript(String text) {
         highlightKeywords(text, jsKeywords, syntaxColors.get("keyword"));
+        highlightStrings(text, syntaxColors.get("string"));
+        highlightComments(text, syntaxColors.get("comment"));
+        highlightNumbers(text, syntaxColors.get("number"));
+    }
+    
+    private void highlightCpp(String text) {
+        highlightKeywords(text, cppKeywords, syntaxColors.get("keyword"));
         highlightStrings(text, syntaxColors.get("string"));
         highlightComments(text, syntaxColors.get("comment"));
         highlightNumbers(text, syntaxColors.get("number"));
@@ -917,7 +943,7 @@ public class TextEditor extends JFrame {
 
     private void showAboutDialog() {
         String aboutMessage = "Advanced Text Editor\n\n" +
-                            "Developed by: [Your Name] & [Partner Name]\n" +
+                            "Developed by: YuhangLiu & JiayuXu\n" +
                             "Massey University - 159.251 Software Design and Construction\n" +
                             "Version 1.0\n\n" +
                             "Features:\n" +
