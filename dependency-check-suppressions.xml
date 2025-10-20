@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+    <!-- Add any false positives or acceptable vulnerabilities here -->
+    <!-- Example:
+    <suppress>
+        <notes><![CDATA[
+            This is a false positive for library X because...
+        ]]></notes>
+        <filePath regex="true">.*library-x-.*\.jar</filePath>
+        <cve>CVE-2023-XXXXX</cve>
+    </suppress>
+    -->
+    
+    <!-- Suppress any test-related false positives -->
+    <suppress>
+        <notes><![CDATA[
+            Suppress test dependencies that are not shipped with the application
+        ]]></notes>
+        <filePath regex="true">.*test.*\.jar</filePath>
+        <cpe regex="true">.*</cpe>
+    </suppress>
+</suppressions>
