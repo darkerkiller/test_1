@@ -82,15 +82,13 @@ jobs:
     - name: Build JAR
       run: mvn clean package -DskipTests
     
-    - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload release assets
+      uses: actions/upload-artifact@v4
       with:
-        upload_url: ${{ needs.create-release.outputs.upload_url }}
-        asset_path: target/text-editor-1.0-SNAPSHOT.jar
-        asset_name: text-editor-${{ matrix.os }}-java${{ matrix.java-version }}.jar
-        asset_content_type: application/java-archive
+        name: release-assets-${{ matrix.os }}-java${{ matrix.java-version }}
+        path: |
+          target/*.jar
+          release/*.tar.gz
 
   docker-release:
     name: Docker Release

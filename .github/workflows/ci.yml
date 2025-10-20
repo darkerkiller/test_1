@@ -39,14 +39,14 @@ jobs:
       run: mvn surefire-report:report
     
     - name: Upload test results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: test-results-${{ matrix.os }}-java${{ matrix.java-version }}
         path: target/surefire-reports/
     
     - name: Upload test coverage
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: test-coverage-${{ matrix.os }}-java${{ matrix.java-version }}
@@ -78,7 +78,7 @@ jobs:
       run: mvn pmd:pmd
     
     - name: Upload PMD results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: pmd-results
         path: target/reports/pmd/
@@ -114,7 +114,7 @@ jobs:
       continue-on-error: true
     
     - name: Upload security scan results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: security-scan-results
         path: target/dependency-check-report.html
@@ -145,7 +145,7 @@ jobs:
       run: mvn clean package -DskipTests
     
     - name: Upload JAR artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: text-editor-jar
         path: target/*.jar
@@ -159,7 +159,7 @@ jobs:
         cd release && tar -czf text-editor-release.tar.gz *
     
     - name: Upload release archive
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: text-editor-release
         path: release/text-editor-release.tar.gz
@@ -188,7 +188,7 @@ jobs:
       run: docker save text-editor:latest | gzip > text-editor-docker.tar.gz
     
     - name: Upload Docker image
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: text-editor-docker
         path: text-editor-docker.tar.gz
